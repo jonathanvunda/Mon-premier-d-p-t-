@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atelier Maison — Architecture et décoration d'intérieur</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1e2326;
+      --slate: #4a5862;
+      --stone: #e6e4df;
+      --paper: #f7f7f5;
+      --oak: #9c7a56;
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --sans: "Work Sans", Arial, sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      font-weight: 300;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.7;
+    }
+
+    a:focus-visible, .btn:focus-visible {
+      outline: 2px solid var(--oak);
+      outline-offset: 4px;
+    }
+
+    .container {
+      width: min(1120px, 100% - 3rem);
+      margin-inline: auto;
+    }
+
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--paper);
+      border-bottom: 1px solid var(--stone);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 0;
+    }
+
+    .logo {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav ul {
+      display: flex;
+      gap: 2.25rem;
+      list-style: none;
+    }
+
+    .nav a {
+      color: var(--slate);
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .nav a:hover { color: var(--ink); }
+
+    /* Bannière */
+    .hero {
+      padding: 6rem 0 7rem;
+    }
+
+    .hero .container {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: 1.02;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--slate);
+      max-width: 42ch;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--ink);
+      color: var(--paper);
+      padding: 0.95rem 2rem;
+      font-size: 0.95rem;
+      font-weight: 400;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn:hover { background: var(--slate); }
+
+    /* Visuel abstrait de la bannière : plan architectural simplifié */
+    .hero-visual {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      background: var(--stone);
+    }
+
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      inset: 12%;
+      border: 1px solid var(--slate);
+    }
+
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      left: 12%;
+      bottom: 12%;
+      width: 48%;
+      height: 38%;
+      background: var(--oak);
+    }
+
+    /* Présentation */
+    .about {
+      padding: 6rem 0;
+      border-top: 1px solid var(--stone);
+    }
+
+    .about .container {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+    }
+
+    .about h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 2.4rem;
+      line-height: 1.1;
+    }
+
+    .about p {
+      font-size: 1.15rem;
+      max-width: 60ch;
+      color: var(--slate);
+    }
+
+    /* Services */
+    .services {
+      padding: 6rem 0;
+      background: var(--stone);
+    }
+
+    .services h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 2.4rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .services ul {
+      list-style: none;
+    }
+
+    .services li {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-top: 1px solid var(--slate);
+    }
+
+    .services li:last-child {
+      border-bottom: 1px solid var(--slate);
+    }
+
+    .services h3 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 1.6rem;
+    }
+
+    .services li p {
+      color: var(--slate);
+    }
+
+    /* Pied de page */
+    footer {
+      padding: 2.5rem 0;
+      background: var(--ink);
+      color: var(--stone);
+      font-size: 0.9rem;
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 800px) {
+      .hero .container,
+      .about .container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .hero-visual {
+        aspect-ratio: 1 / 1;
+      }
+
+      .services li {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+
+      .nav ul {
+        gap: 1.25rem;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .nav ul li:not(:last-child) {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .btn { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <a href="#accueil" class="logo">Atelier Maison</a>
+      <nav aria-label="Navigation principale">
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#apropos">À propos</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="accueil">
+      <div class="container">
+        <div>
+          <h1>Des espaces pensés pour vivre</h1>
+          <p>Architecture et décoration d'intérieur, du premier croquis à la dernière touche. Nous transformons votre projet en lieux justes, lumineux et à votre image.</p>
+          <a href="#contact" class="btn">Demander une consultation</a>
+        </div>
+        <div class="hero-visual" role="img" aria-label="Illustration abstraite d'un plan d'architecte"></div>
+      </div>
+    </section>
+
+    <section class="about" id="apropos">
+      <div class="container">
+        <h2>Qui nous sommes</h2>
+        <p>Atelier Maison est un cabinet d'architectes et de décorateurs. Nous accompagnons particuliers et entreprises dans la conception de leurs espaces, en alliant rigueur technique, sens des matières et attention au quotidien de ceux qui les habitent.</p>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="container">
+        <h2>Nos services</h2>
+        <ul>
+          <li>
+            <h3>Architecture d'intérieur</h3>
+            <p>Étude des plans, réaménagement des volumes, optimisation de la lumière et des circulations.</p>
+          </li>
+          <li>
+            <h3>Décoration d'intérieur</h3>
+            <p>Choix des couleurs, des matériaux, du mobilier et des luminaires, dans un esprit cohérent.</p>
+          </li>
+          <li>
+            <h3>Suivi de chantier</h3>
+            <p>Coordination des artisans, respect des délais et du budget, contrôle de la qualité.</p>
+          </li>
+          <li>
+            <h3>Conseil en aménagement</h3>
+            <p>Un regard extérieur pour optimiser un espace existant, sans travaux lourds.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div class="container">
+      <p>&copy; 2026 Atelier Maison. Tous droits réservés.</p>
+      <p>contact@atelier-maison.com</p>
+    </div>
+  </footer>
+
+</body>
+</html>
